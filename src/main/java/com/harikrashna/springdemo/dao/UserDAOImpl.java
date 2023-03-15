@@ -35,7 +35,9 @@ public class UserDAOImpl implements UserDAO {
 		//execute query and get result list
 		List<User> user = theQuery.getResultList();
 		
-		
+		for(User u : user) {
+			System.out.println("User" + u);
+		}
 		
 		//return the result
 		return user;
@@ -46,9 +48,10 @@ public class UserDAOImpl implements UserDAO {
 	public void saveUser(User theUser) {
 		//get the current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
-		
+		System.out.println("Dao : "+ "Sav user request is gentrated we have got user = "+theUser);
 		//save the user...... finally..lol....
 		//for decision user data to be save or update 
+		
 		currentSession.saveOrUpdate(theUser);
 		
 		

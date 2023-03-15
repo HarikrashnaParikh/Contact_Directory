@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	@Transactional
 	public void saveUser(User theUser) {
-		
+		System.out.println("Servicre : "+ "Sav user request is gentrated we have got user = "+theUser);
 		userDAO.saveUser(theUser);
 		
 	}

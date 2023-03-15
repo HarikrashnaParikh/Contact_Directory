@@ -31,9 +31,11 @@ public class UserController {
 		List<User> theUsers = userService.getUsers();
 		
 		for(User user:theUsers) {
-			System.out.println(user.getMobiles());
+			System.out.println(user.getName() + "getMobiles called " + user.getMobiles());
 			
 		}
+		
+		
 		//add the users to the model
 		theModel.addAttribute("users",theUsers);
 		
@@ -44,8 +46,11 @@ public class UserController {
 	public String showFormForAdd(Model theModel)
 	{
 		//create model attribute to bind form data
+		System.out.println("Hii");
 		User theUser = new User();
+		System.out.println("Mobile Created " + theUser);
 		theModel.addAttribute("user",theUser);
+		System.out.println("Model is " + theModel);
 		
 		return "user-form";
 	}
@@ -53,6 +58,9 @@ public class UserController {
 	@PostMapping("/saveUser")
 	public String saveUser(@ModelAttribute("user") User theUser) {
 		//save the user using our device
+		System.out.println(theUser.getMobiles()+"Rohit Sharma ===========================================");
+//		theUser.getMobiles().get(theUser.getMobiles().size()-1).setUser_id(theUser);
+		theUser.addAttribute(theUser.getMobiles().get(theUser.getMobiles().size()-1));
 		userService.saveUser(theUser);
 		
 		return "redirect:/user/list";
@@ -60,12 +68,14 @@ public class UserController {
 		
 	}
 	@GetMapping("/showFormForUpdate")
-	public String showFormForUpdate(@RequestParam("userId") int theId,Model theModel) {
+	public String showFormForUpdate(@RequestParam("userId") int theId,@RequestParam("mobileNo") int mobileNo,Model theModel) {
 		
 		
 		//get the user from service
+		
 		User theUser = userService.getUser(theId);
 		//set user as a model attribute to pre-populate the form 
+		
 		theModel.addAttribute("user", theUser);
 		//send over to our form 
 		return "user-form";

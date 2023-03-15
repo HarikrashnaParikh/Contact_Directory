@@ -21,19 +21,31 @@ public class Mobile {
 	private int id;
 
 	@Column(name = "phone_no")
-	private String phone_no;
+	private String phoneNo;
 //	private int user_id;
 
 	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH })
 	@JoinColumn(name = "user_id")
 	private User user_id;
 
+	public User getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(User user_id) {
+		this.user_id = user_id;
+	}
+
+	public void setPhoneNo(String phoneNo) {
+		this.phoneNo = phoneNo;
+	}
+
 	public Mobile() {
 		System.out.println("Creating a bean fro mobil ...............................");
 	}
 
 	public Mobile(String phone_no) {
-		this.phone_no = phone_no;
+		this.phoneNo = phone_no;
 	}
 
 	public int getId() {
@@ -44,17 +56,14 @@ public class Mobile {
 		this.id = id;
 	}
 
-	public String getPhone_no() {
-		return phone_no;
+	public String getPhoneNo() {
+		return phoneNo;
 	}
 
-	public void setPhone_no(String phone_no) {
-		this.phone_no = phone_no;
-	}
-
+	
 	@Override
 	public String toString() {
-		return "Mobile [id=" + id + ", phone_no=" + phone_no + "]";
+		return "Mobile [id=" + id + ", phone_no=" + phoneNo + "]"+user_id;
 	}
 
 }

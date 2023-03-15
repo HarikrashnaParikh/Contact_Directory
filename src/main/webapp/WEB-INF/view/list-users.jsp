@@ -26,7 +26,7 @@
 
 			<!--  add a search box -->
             <form:form action="search" method="GET">
-                Search User: <input type="text" name="theSearchName" />
+                Search User: <input type="text" name="theSearchName"/>
                 
                 <input type="submit" value="Search" class="add-button" />
             </form:form>
@@ -46,6 +46,7 @@
 					<!--  Construct an "update" link with user id (primary key)  -->
 					<c:url var="updateLink" value="/user/showFormForUpdate">
 						<c:param name="userId" value="${tempUser.id}" />
+						<c:param name="mobileNo" value="${tempMobile.phoneNo}" />
 
 					</c:url>
 					
@@ -58,7 +59,7 @@
 					<tr>
 						<td>${tempUser.id}</td>
 						<td>${tempUser.name}</td>
-						<td>${tempMobile.phone_no}</td>
+						<td>${tempMobile.phoneNo}</td>
 						<td>${tempUser.is_fav}</td>
 						<td>
 							<!-- display the update link --> <a href="${updateLink}">Update</a>

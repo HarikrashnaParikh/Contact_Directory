@@ -43,7 +43,9 @@ public class MobileController {
 	{
 		//create model attribute to bind form data
 		Mobile theMobile = new Mobile();
+		
 		theModel.addAttribute("mobile",theMobile);
+		
 		
 		return "user-form";
 	}
@@ -64,6 +66,7 @@ public class MobileController {
 		
 		//get the user from service
 		Mobile theMobile = mobileService.getMobile(theId);
+		System.out.println(theMobile+"======="+theId);
 		//set user as a model attribute to pre-populate the form 
 		theModel.addAttribute("mobile", theMobile);
 		//send over to our form 

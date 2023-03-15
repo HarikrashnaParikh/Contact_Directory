@@ -35,6 +35,7 @@ public class MobileDAOImpl implements MobileDAO {
 	public void saveMobile(Mobile theMobile) {
 		// get the current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
+		
 
 		// save the user...... finally..lol....
 		// for decision user data to be save or update

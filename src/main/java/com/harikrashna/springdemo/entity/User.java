@@ -1,8 +1,7 @@
 package com.harikrashna.springdemo.entity;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +11,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+
+
+import javax.persistence.JoinColumn;
 
 @Entity
 @Table(name = "user")
@@ -30,25 +33,20 @@ public class User {
 	private boolean is_fav;
 	
 	
-	@OneToMany(mappedBy="user_id",fetch=FetchType.EAGER)
-	
+	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JoinColumn(name="user_id")
 	private List<Mobile> mobiles;
 	
-	
-	
-	
-
-	public List<Mobile> getMobiles() {
-		return mobiles;
-	}
-
-	public void setMobiles(List<Mobile> mobiles) {
-		this.mobiles = mobiles;
-	}
 
 	public User(){
 		System.out.println("Creating a bean fro user ...............................");
 	}
+	
+	
+	public User(String name) {
+		this.name = name;
+	}
+	
 
 	public int getId() {
 		return id;
@@ -72,6 +70,29 @@ public class User {
 
 	public void setIs_fav(boolean is_fav) {
 		this.is_fav = is_fav;
+	}
+	
+
+	public List<Mobile> getMobiles() {
+		return mobiles;
+	}
+
+	public void setMobiles(List<Mobile> mobiles) {
+		
+		this.mobiles = mobiles;
+		
+		System.out.println("==========="+this.mobiles);
+	}
+	
+	public void addAttribute(Mobile theMobile) {
+		
+		if (mobiles == null) {
+			mobiles = new ArrayList<>();
+		}
+		
+		mobiles.add(theMobile);
+		
+		theMobile.setUser_id(this);
 	}
 	
 	public void printAll() {
