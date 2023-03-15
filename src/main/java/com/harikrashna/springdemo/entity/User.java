@@ -31,6 +31,7 @@ public class User {
 	
 	
 	@OneToMany(mappedBy="user_id",fetch=FetchType.EAGER)
+	
 	private List<Mobile> mobiles;
 	
 	

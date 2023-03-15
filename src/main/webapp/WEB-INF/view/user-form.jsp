@@ -26,9 +26,7 @@
 
 							<td><label>Name:</label></td>
 							<td><form:input path="name" /></td>
-															
-							<!--<td><label>Mobile:</label></td>-->
-							<!--<td><form:input path="mobile"/></td>-->
+						
 																
 						</tr>
 						<tr>
